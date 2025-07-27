@@ -1,0 +1,817 @@
+/* ======================================
+   PHYSICS LISTRIK CSS - Styling untuk Aplikasi Streamlit
+   Developer: afrafdhma (Afra Fadhma Dinata)
+   ====================================== */
+
+/* Root Variables untuk Dark/Light Mode */
+:root {
+    --primary-color: #2E86AB;
+    --primary-dark: #1a5a7a;
+    --secondary-color: #A23B72;
+    --secondary-dark: #7a2d56;
+    --accent-color: #F18F01;
+    --accent-dark: #c7740a;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+    
+    /* Light Mode Colors */
+    --background-light: #F8F9FA;
+    --background-secondary-light: #E9ECEF;
+    --text-light: #2D3748;
+    --text-secondary-light: #4A5568;
+    --card-light: #FFFFFF;
+    --border-light: #E2E8F0;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    
+    /* Dark Mode Colors */
+    --background-dark: #1A202C;
+    --background-secondary-dark: #2D3748;
+    --text-dark: #F7FAFC;
+    --text-secondary-dark: #E2E8F0;
+    --card-dark: #2D3748;
+    --border-dark: #4A5568;
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+    
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-xxl: 3rem;
+    
+    /* Border Radius */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+    
+    /* Font Families */
+    --font-primary: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    --font-display: 'Poppins', 'Inter', sans-serif;
+}
+
+/* ======================================
+   GLOBAL STYLES
+   ====================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background: var(--background-light);
+    color: var(--text-light);
+    line-height: 1.6;
+    transition: all 0.3s ease;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-secondary-light);
+    border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: var(--radius-sm);
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* ======================================
+   HEADER STYLES
+   ====================================== */
+
+.main-header {
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-2xl);
+    margin-bottom: var(--spacing-xxl);
+    box-shadow: 0 10px 30px var(--shadow-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.main-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.main-header h1 {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.main-header p {
+    font-size: 1.2rem;
+    margin: var(--spacing-md) 0 0 0;
+    opacity: 0.9;
+}
+
+/* ======================================
+   CARD STYLES
+   ====================================== */
+
+.physics-card {
+    background: var(--card-light);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-2xl);
+    box-shadow: 0 4px 20px var(--shadow-light);
+    margin: var(--spacing-lg) 0;
+    border-left: 4px solid var(--accent-color);
+    position: relative;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.physics-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px var(--shadow-light);
+    border-left-color: var(--primary-color);
+}
+
+.physics-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        var(--primary-color) 0%, 
+        var(--accent-color) 50%, 
+        var(--secondary-color) 100%);
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+}
+
+/* ======================================
+   RESULT BOX STYLES
+   ====================================== */
+
+.result-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    margin: var(--spacing-lg) 0;
+    text-align: center;
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.result-box:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 35px rgba(102, 126, 234, 0.4);
+}
+
+.result-box::after {
+    content: '⚡';
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    opacity: 0.3;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+.result-box h3, .result-box h4 {
+    margin: 0;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.result-box h3 {
+    font-size: 1.8rem;
+}
+
+.result-box h4 {
+    font-size: 1.4rem;
+}
+
+/* ======================================
+   FORMULA BOX STYLES
+   ====================================== */
+
+.formula-box {
+    background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-md) 0;
+    font-family: var(--font-mono);
+    text-align: center;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.formula-box:hover {
+    border-color: var(--accent-color);
+    background: linear-gradient(145deg, #ffffff, #f1f3f4);
+}
+
+.formula-box::before {
+    content: '🧮';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--card-light);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: 1.2rem;
+}
+
+.formula-box strong {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* ======================================
+   SIDEBAR STYLES
+   ====================================== */
+
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-right: 3px solid var(--accent-color);
+}
+
+[data-testid="stSidebar"] > div {
+    background: transparent;
+}
+
+[data-testid="stSidebar"] .stSelectbox label,
+[data-testid="stSidebar"] .stNumberInput label,
+[data-testid="stSidebar"] .stSlider label,
+[data-testid="stSidebar"] .stRadio label,
+[data-testid="stSidebar"] h3 {
+    color: white !important;
+    font-weight: 600 !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+[data-testid="stSidebar"] .stMarkdown {
+    color: white !important;
+}
+
+/* ======================================
+   INPUT STYLES
+   ====================================== */
+
+.stSelectbox > div > div,
+.stNumberInput > div > div > input,
+.stSlider > div > div {
+    border-radius: var(--radius-lg) !important;
+    border: 2px solid var(--border-light) !important;
+    transition: all 0.3s ease !important;
+}
+
+.stSelectbox > div > div:focus-within,
+.stNumberInput > div > div > input:focus,
+.stSlider > div > div:hover {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.1) !important;
+}
+
+.stButton > button {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    border: none;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(46, 134, 171, 0.3);
+}
+
+.stButton > button:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 134, 171, 0.4);
+}
+
+/* ======================================
+   PLOTLY CHART CONTAINER
+   ====================================== */
+
+.js-plotly-plot {
+    border-radius: var(--radius-xl);
+    box-shadow: 0 4px 20px var(--shadow-light);
+    overflow: hidden;
+    background: var(--card-light);
+    padding: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+/* ======================================
+   MATPLOTLIB FIGURE STYLING
+   ====================================== */
+
+.stPlotlyChart,
+.element-container .stPlotlyChart,
+div[data-testid="stPlotlyChart"] {
+    background: var(--card-light);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-md);
+    box-shadow: 0 4px 20px var(--shadow-light);
+    margin: var(--spacing-lg) 0;
+}
+
+.stPyplot > div {
+    background: var(--card-light);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-md);
+    box-shadow: 0 4px 20px var(--shadow-light);
+    margin: var(--spacing-lg) 0;
+}
+
+/* ======================================
+   WATERMARK STYLES
+   ====================================== */
+
+.watermark {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(46, 134, 171, 0.1);
+    color: var(--primary-color);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 999;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(46, 134, 171, 0.2);
+    transition: all 0.3s ease;
+}
+
+.watermark:hover {
+    background: rgba(46, 134, 171, 0.2);
+    transform: scale(1.05);
+}
+
+/* ======================================
+   CUSTOM ANIMATIONS
+   ====================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        opacity: 0;
+        transform: rotate(-180deg) scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Apply animations to elements */
+.physics-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.result-box {
+    animation: bounceIn 0.8s ease-out;
+}
+
+.formula-box {
+    animation: slideInLeft 0.5s ease-out;
+}
+
+/* ======================================
+   DARK MODE STYLES
+   ====================================== */
+
+[data-theme="dark"] {
+    --background-primary: var(--background-dark);
+    --background-secondary: var(--background-secondary-dark);
+    --text-primary: var(--text-dark);
+    --text-secondary: var(--text-secondary-dark);
+    --card-background: var(--card-dark);
+    --border-color: var(--border-dark);
+    --shadow-color: var(--shadow-dark);
+}
+
+[data-theme="dark"] body {
+    background: var(--background-dark);
+    color: var(--text-dark);
+}
+
+[data-theme="dark"] .physics-card {
+    background: var(--card-dark);
+    color: var(--text-dark);
+    box-shadow: 0 4px 20px var(--shadow-dark);
+}
+
+[data-theme="dark"] .formula-box {
+    background: linear-gradient(145deg, var(--background-secondary-dark), var(--card-dark));
+    color: var(--text-dark);
+    border-color: var(--primary-color);
+}
+
+[data-theme="dark"] .watermark {
+    background: rgba(46, 134, 171, 0.2);
+    color: var(--text-dark);
+    border-color: rgba(46, 134, 171, 0.3);
+}
+
+/* ======================================
+   RESPONSIVE DESIGN
+   ====================================== */
+
+@media (max-width: 768px) {
+    .main-header h1 {
+        font-size: 2rem;
+    }
+    
+    .main-header p {
+        font-size: 1rem;
+    }
+    
+    .physics-card {
+        padding: var(--spacing-lg);
+        margin: var(--spacing-sm) 0;
+    }
+    
+    .result-box {
+        padding: var(--spacing-lg);
+    }
+    
+    .result-box h3 {
+        font-size: 1.5rem;
+    }
+    
+    .result-box h4 {
+        font-size: 1.2rem;
+    }
+    
+    .formula-box {
+        padding: var(--spacing-md);
+    }
+    
+    .watermark {
+        bottom: 10px;
+        right: 10px;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-header {
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    .main-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .physics-card {
+        padding: var(--spacing-md);
+        border-radius: var(--radius-lg);
+    }
+    
+    .result-box {
+        padding: var(--spacing-md);
+        border-radius: var(--radius-lg);
+    }
+    
+    .formula-box {
+        padding: var(--spacing-sm);
+        border-radius: var(--radius-md);
+    }
+}
+
+/* ======================================
+   SPECIAL EFFECTS FOR PHYSICS THEME
+   ====================================== */
+
+/* Electric current animation */
+@keyframes electricFlow {
+    0% { 
+        box-shadow: 0 0 5px var(--accent-color);
+    }
+    50% { 
+        box-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--accent-color);
+    }
+    100% { 
+        box-shadow: 0 0 5px var(--accent-color);
+    }
+}
+
+.electric-effect {
+    animation: electricFlow 2s infinite;
+}
+
+/* Voltage gradient effect */
+.voltage-gradient {
+    background: linear-gradient(
+        45deg,
+        var(--primary-color),
+        var(--accent-color),
+        var(--secondary-color),
+        var(--primary-color)
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Circuit board pattern background */
+.circuit-pattern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 25% 25%, var(--primary-color) 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, var(--secondary-color) 2px, transparent 2px);
+    background-size: 50px 50px;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+/* Resistance color coding */
+.resistance-band-1 { border-left-color: #8B4513; } /* Brown */
+.resistance-band-2 { border-left-color: #FF0000; } /* Red */
+.resistance-band-3 { border-left-color: #FFA500; } /* Orange */
+.resistance-band-4 { border-left-color: #FFFF00; } /* Yellow */
+.resistance-band-5 { border-left-color: #008000; } /* Green */
+.resistance-band-6 { border-left-color: #0000FF; } /* Blue */
+.resistance-band-7 { border-left-color: #800080; } /* Violet */
+.resistance-band-8 { border-left-color: #808080; } /* Gray */
+.resistance-band-9 { border-left-color: #FFFFFF; } /* White */
+.resistance-band-0 { border-left-color: #000000; } /* Black */
+
+/* Power indicator colors */
+.power-low { 
+    background: linear-gradient(135deg, #28a745, #20c997); 
+    color: white;
+}
+.power-medium { 
+    background: linear-gradient(135deg, #ffc107, #fd7e14); 
+    color: black;
+}
+.power-high { 
+    background: linear-gradient(135deg, #dc3545, #e74c3c); 
+    color: white;
+}
+
+/* Efficiency indicators */
+.efficiency-excellent::after {
+    content: '⭐⭐⭐';
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1rem;
+    animation: twinkle 1.5s infinite;
+}
+
+.efficiency-good::after {
+    content: '⭐⭐';
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1rem;
+    animation: twinkle 1.5s infinite;
+}
+
+.efficiency-poor::after {
+    content: '⚠️';
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1rem;
+    animation: warning 1s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes warning {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* ======================================
+   INTERACTIVE HOVER EFFECTS
+   ====================================== */
+
+.hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 30px rgba(46, 134, 171, 0.4);
+}
+
+.hover-scale:hover {
+    transform: scale(1.02);
+}
+
+/* ======================================
+   LOADING ANIMATIONS
+   ====================================== */
+
+.loading-spinner {
+    border: 3px solid var(--border-light);
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-dots::after {
+    content: '';
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60%, 100% { content: '...'; }
+}
+
+/* ======================================
+   UTILITY CLASSES
+   ====================================== */
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-0 { margin-bottom: 0 !important; }
+.mb-1 { margin-bottom: var(--spacing-xs) !important; }
+.mb-2 { margin-bottom: var(--spacing-sm) !important; }
+.mb-3 { margin-bottom: var(--spacing-md) !important; }
+.mb-4 { margin-bottom: var(--spacing-lg) !important; }
+.mb-5 { margin-bottom: var(--spacing-xl) !important; }
+
+.mt-0 { margin-top: 0 !important; }
+.mt-1 { margin-top: var(--spacing-xs) !important; }
+.mt-2 { margin-top: var(--spacing-sm) !important; }
+.mt-3 { margin-top: var(--spacing-md) !important; }
+.mt-4 { margin-top: var(--spacing-lg) !important; }
+.mt-5 { margin-top: var(--spacing-xl) !important; }
+
+.p-0 { padding: 0 !important; }
+.p-1 { padding: var(--spacing-xs) !important; }
+.p-2 { padding: var(--spacing-sm) !important; }
+.p-3 { padding: var(--spacing-md) !important; }
+.p-4 { padding: var(--spacing-lg) !important; }
+.p-5 { padding: var(--spacing-xl) !important; }
+
+.rounded { border-radius: var(--radius-md) !important; }
+.rounded-lg { border-radius: var(--radius-lg) !important; }
+.rounded-xl { border-radius: var(--radius-xl) !important; }
+.rounded-2xl { border-radius: var(--radius-2xl) !important; }
+
+.shadow-sm { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important; }
+.shadow { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important; }
+.shadow-lg { box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important; }
+.shadow-xl { box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25) !important; }
+
+/* ======================================
+   PRINT STYLES
+   ====================================== */
+
+@media print {
+    .watermark,
+    [data-testid="stSidebar"],
+    .stButton {
+        display: none !important;
+    }
+    
+    .physics-card,
+    .result-box,
+    .formula-box {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+        background: white !important;
+        color: black !important;
+    }
+    
+    .main-header {
+        background: white !important;
+        color: black !important;
+        border: 2px solid #333 !important;
+    }
+}
